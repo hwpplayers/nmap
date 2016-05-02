@@ -1,0 +1,11 @@
+nmap (7.12-1parrot0) testing; urgency=medium
+
+  * Converted from quilt to git
+
+ -- Lorenzo "Palinuro" Faletra <eclipse@frozenbox.org>  Mon, 02 May 2016 19:37:54 +0200
+
+nmap (7.12-0parrot0) testing; urgency=medium
+
+  * Import into Parrot Security
+
+ -- Lorenzo "Palinuro" Faletra <palinuro@frozenbox.org>  Mon, 04 Apr 2016 21:45:04 +0200
