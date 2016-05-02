@@ -1,7 +1,7 @@
 Source: nmap
 Section: net
 Priority: extra
-Maintainer: Hilko Bengen <bengen@debian.org>
+Maintainer: Lorenzo "Palinuro" Faletra <palinuro@parrotsec.org>
 Build-Depends: debhelper (>=9), dh-autoreconf,
  dh-python,
  bison,
