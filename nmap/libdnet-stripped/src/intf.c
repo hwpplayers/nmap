@@ -561,8 +561,11 @@ _intf_get_noalias(intf_t *intf, struct intf_entry *entry)
 #elif defined(SIOCGIFHWADDR)
 		if (ioctl(intf->fd, SIOCGIFHWADDR, &ifr) < 0)
 			return (-1);
-		if (addr_ston(&ifr.ifr_addr, &entry->intf_link_addr) < 0)
-			return (-1);
+		if (addr_ston(&ifr.ifr_addr, &entry->intf_link_addr) < 0) {
+		  /* Likely we got an unsupported address type. Just use NONE for now. */
+		  entry->intf_link_addr.addr_type = ADDR_TYPE_NONE;
+		  entry->intf_link_addr.addr_bits = 0;
+    }
 #elif defined(SIOCRPHYSADDR)
 		/* Tru64 */
 		struct ifdevea *ifd = (struct ifdevea *)&ifr; /* XXX */
@@ -928,12 +931,10 @@ intf_loop(intf_t *intf, intf_handler callback, void *arg)
 		entry->intf_len = sizeof(ebuf);
 		
 		if (_intf_get_noalias(intf, entry) < 0) {
-			ret = -1;
-			break;
+			continue;
 		}
 		if (_intf_get_aliases(intf, entry) < 0) {
-			ret = -1;
-			break;
+			continue;
 		}
 		if ((ret = (*callback)(entry, arg)) != 0)
 			break;
