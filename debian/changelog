@@ -1,3 +1,9 @@
+nmap (7.31-1parrot0) testing; urgency=medium
+
+  * New upstream version 7.31
+
+ -- Lorenzo Palinuro Faletra <palinuro@parrotsec.org>  Sun, 20 Nov 2016 21:00:25 +0100
+
 nmap (7.30-0parrot1) testing; urgency=medium
 
   * Import new upstream release
